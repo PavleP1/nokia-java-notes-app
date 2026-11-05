@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -22,8 +22,8 @@ jobs:
 
       - name: Compile and Package JAR
         run: |
-          # Compile targeting legacy J2ME bytecode
-          javac -source 1.3 -target 1.3 -bootclasspath cldcapi11.jar:midpapi21.jar ModernNotes.java
+          # Compile targeting Java 1.4 bytecode compatible with Nokia S40
+          javac -source 1.4 -target 1.4 -bootclasspath cldcapi11.jar:midpapi21.jar ModernNotes.java
 
           # Create Manifest file
           echo "Manifest-Version: 1.0" > MANIFEST.MF
