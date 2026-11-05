@@ -7,10 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Java 8
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '8'
@@ -29,7 +29,7 @@ jobs:
           echo "Manifest-Version: 1.0" > MANIFEST.MF
           echo "MIDlet-1: Modern Notes, , ModernNotes" >> MANIFEST.MF
           echo "MIDlet-Name: Modern Notes" >> MANIFEST.MF
-          echo "MIDlet-Vendor: Custom" >> MIDlet-Vendor
+          echo "MIDlet-Vendor: Custom" >> MANIFEST.MF
           echo "MIDlet-Version: 1.0.0" >> MANIFEST.MF
           echo "MicroEdition-Configuration: CLDC-1.1" >> MANIFEST.MF
           echo "MicroEdition-Profile: MIDP-2.1" >> MANIFEST.MF
@@ -38,7 +38,7 @@ jobs:
           jar cvfm ModernNotes.jar MANIFEST.MF *.class
 
       - name: Save JAR Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ModernNotes-jar
           path: ModernNotes.jar
